@@ -1,11 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+    }
+    .login-form {
+      max-width: 300px;
+      margin: auto;
+    }
+    input {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 8px;
+    }
+    .error {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-    <h1>hallo</h1>
+  <div class="login-form">
+    <h2>Login</h2>
+    <form id="loginForm" method="POST" action="login.php" onsubmit="return validateForm()">
+      <input type="text" name="username" id="username" placeholder="Benutzername" required />
+      <input type="password" name="password" id="password" placeholder="Passwort" required />
+      <button type="submit">Einloggen</button>
+      <p class="error" id="errorMsg"></p>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      if (username === "" || password === "") {
+        document.getElementById('errorMsg').innerText = "Alle Felder müssen ausgefüllt sein.";
+        return false;
+      }
+      return true;
+    }
+  </script>
 </body>
 </html>
